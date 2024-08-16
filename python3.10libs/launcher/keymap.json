@@ -1,0 +1,8 @@
+{
+    "sop": {
+        "m": "merge",
+        "t": "transform",
+        "e": "polyextrude",
+        "w": "attribwrangle"
+    }
+}
