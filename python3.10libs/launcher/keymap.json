@@ -1,8 +1,10 @@
 {
     "sop": {
-        "m": "merge",
-        "t": "transform",
+        "t": "xform",
         "e": "polyextrude",
-        "w": "attribwrangle"
+        "w": "attribwrangle",
+        "b": "blast",
+        "g": "group",
+        "m": "merge"
     }
 }
