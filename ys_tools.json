@@ -1,3 +1,10 @@
 {
-  "hpath": "C:/Users/$USER/Documents/houdini20.0/packages/ys_tools"
+    "enable": true,
+    "env": [
+        {
+            "var": "YS_Tools",
+            "value": "C:/Users/$USER/Documents/houdini19.0/packages/ys_tools"
+        }
+    ],
+    "path": "$YS_Tools"
 }
