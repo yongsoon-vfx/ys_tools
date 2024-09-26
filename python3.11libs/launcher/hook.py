@@ -1,8 +1,29 @@
+import logging
 import tkinter as tk
+from enum import Enum
+
 import hou
 
 from launcher.edit import *
 from launcher.keymap import *
+
+
+class NodeEditorState(Enum):
+    NO_NODE_SELECTED = 0
+    LEAF_NODE_SELECTED = 1
+    MIDDLE_NODE_SELECTED = 2
+    INVALID_NODE_STATE = 3
+
+
+def check_state(selected_nodes: tuple[hou.Node]) -> NodeEditorState:
+    if selected_nodes is None:
+        return NodeEditorState.NO_NODE_SELECTED
+    last_selected = selected_nodes[-1]
+    if last_selected.outputs() is None:
+        return NodeEditorState.LEAF_NODE_SELECTED
+    else:
+        return NodeEditorState.MIDDLE_NODE_SELECTED
+    return NodeEditorState.INVALID_NODE_STATE
 
 
 def on_key_press(event):
@@ -19,6 +40,7 @@ def on_key_press(event):
         return
     elif event.keysym == "Tab":
         import pprint
+
         keymap = keymap_load()
         pprint.pp(keymap)
         root.destroy()
@@ -27,7 +49,7 @@ def on_key_press(event):
     print(f"Key Pressed: {event.keysym}")
     try:
         node = keymap_lookup("sop", str(event.keysym))
-    except:
+    except Exception as _:
         print(f"{event.keysym} is not bound")
         root.destroy()
         return
@@ -37,7 +59,7 @@ def on_key_press(event):
     try:
         created_node = network_node.createNode(node)
         created_node.setPosition(cursor_loc)
-    except:
+    except Exception as _:
         logging.error(f"Unable to create {node}. Perhaps check the name?")
     root.destroy()
 
@@ -48,13 +70,16 @@ def on_focus_out(_):
 
 
 def hook_window():
+    editor_state = check_state(hou.selectedNodes())
     global root
     # Create the main window
     root = tk.Tk()
     root.geometry("300x200")
-    label = tk.Label(root,
-                     text="Press any key...\nPress ` to add a binding\n Press Del to remove binding\nPress Tab to show bindings",
-                     font=("Arial", 12))
+    label = tk.Label(
+        root,
+        text="Press any key...\nPress ` to add a binding\n Press Del to remove binding\nPress Tab to show bindings",
+        font=("Arial", 12),
+    )
 
     label.pack(expand=True)
     root.overrideredirect(True)
