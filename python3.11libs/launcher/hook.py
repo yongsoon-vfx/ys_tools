@@ -12,14 +12,15 @@ class NodeEditorState(Enum):
     NO_NODE_SELECTED = 0
     LEAF_NODE_SELECTED = 1
     MIDDLE_NODE_SELECTED = 2
-    INVALID_NODE_STATE = 3
+    MULTIPLE_SELECTED = 3
+    INVALID_NODE_STATE = 4
 
 
 def check_state(selected_nodes: tuple[hou.Node]) -> NodeEditorState:
     if selected_nodes is None:
         return NodeEditorState.NO_NODE_SELECTED
-    last_selected = selected_nodes[-1]
-    if last_selected.outputs() is None:
+    selected_nodes_length = len(selected_nodes)
+    if selected_nodes_length == 0:
         return NodeEditorState.LEAF_NODE_SELECTED
     else:
         return NodeEditorState.MIDDLE_NODE_SELECTED
