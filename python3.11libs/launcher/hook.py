@@ -1,5 +1,6 @@
 import logging
 import tkinter as tk
+from dataclasses import dataclass
 from enum import Enum
 
 import hou
@@ -16,18 +17,38 @@ class NodeEditorState(Enum):
     INVALID_NODE_STATE = 4
 
 
+@dataclass
+class NodeCache:
+    main_node: hou.Node
+    child_node: hou.Node
+
+
+class NodeArranger:
+    def __init__(self, root_node: hou.Node):
+        self.root_node = root_node
+        self.children_recursive = []
+
+    def gatherChildren(self):
+        self.getChildren(self.root_node)
+
+    def getChildren(self, node: hou.Node):
+        for node_child in node.outputs():
+            self.children_recursive.append(node_child)
+            if len(node_child.outputs()) > 0:
+                self.getChildren(node_child)
+
+
 def check_state(selected_nodes: tuple[hou.Node]) -> NodeEditorState:
-    if selected_nodes is None:
-        return NodeEditorState.NO_NODE_SELECTED
     selected_nodes_length = len(selected_nodes)
     if selected_nodes_length == 0:
+        return NodeEditorState.NO_NODE_SELECTED
+    if len(selected_nodes[0].outputs()) == 0:
         return NodeEditorState.LEAF_NODE_SELECTED
-    else:
-        return NodeEditorState.MIDDLE_NODE_SELECTED
-    return NodeEditorState.INVALID_NODE_STATE
+    return NodeEditorState.MIDDLE_NODE_SELECTED
 
 
-def on_key_press(event):
+def on_key_press(event, state):
+    print(state)
     if event.char == "`":
         root.destroy()
         window_add_keymap()
@@ -57,10 +78,42 @@ def on_key_press(event):
         # keymap_append("sop", "m", "merge")
 
     global network_node, cursor_loc
+
     try:
-        created_node = network_node.createNode(node)
+        created_node: hou.Node = network_node.createNode(node)
         created_node.setPosition(cursor_loc)
-    except Exception as _:
+        # Check State
+        if state == NodeEditorState.MIDDLE_NODE_SELECTED:
+            selected_node: hou.Node = hou.selectedNodes()[-1]
+
+            nodes_cache = NodeCache(
+                main_node=selected_node,
+                child_node=selected_node.outputs()[0],
+            )
+            NA = NodeArranger(nodes_cache.child_node)
+            NA.gatherChildren()
+            print(nodes_cache.child_node)
+            print(nodes_cache.main_node)
+            created_node.setPosition(nodes_cache.main_node.position())
+            created_node.move([0, -1])
+            created_node.setInput(0, nodes_cache.main_node, 0)
+            nodes_cache.child_node.move([0, -1])
+            nodes_cache.child_node.setInput(0, created_node, 0)
+            for output in NA.children_recursive:
+                output.move([0, -1])
+        if state == NodeEditorState.LEAF_NODE_SELECTED:
+            selected_node: hou.Node = hou.selectedNodes()[-1]
+            nodes_cache = NodeCache(
+                main_node=selected_node,
+                child_node=None,
+            )
+            print(nodes_cache.main_node)
+            created_node.setPosition(nodes_cache.main_node.position())
+            created_node.move([0, -1])
+            created_node.setInput(0, nodes_cache.main_node, 0)
+
+    except Exception as e:
+        print(e)
         logging.error(f"Unable to create {node}. Perhaps check the name?")
     root.destroy()
 
@@ -87,7 +140,7 @@ def hook_window():
     # Focus on the window
     root.focus_force()
     # Bind the key press event
-    root.bind("<KeyPress>", on_key_press)
+    root.bind("<KeyPress>", lambda event: on_key_press(event, editor_state))
     root.bind("<FocusOut>", on_focus_out)
     root.mainloop()
 
