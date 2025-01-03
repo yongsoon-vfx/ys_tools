@@ -1,0 +1,32 @@
+[sop]
+
+[sop.t]
+action = "createnode"
+param = "xform"
+pre = ""
+post = ""
+
+[sop.w]
+action = "createnode"
+param = "attribwrangle"
+pre = ""
+post = ""
+
+[sop.b]
+action = "createnode"
+param = "blast"
+
+[sop.m]
+action = "createnode"
+param = "merge"
+
+[sop.n]
+action = "createnode"
+param = "null"
+
+[sop.g]
+action = "createnode"
+param = "groupcreate"
+
+[sop.d]
+action = "testing"

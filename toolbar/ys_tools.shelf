@@ -7,11 +7,18 @@
 
   <toolshelf name="YS_Tools" label="YS Tools">
     <memberTool name="Launcher"/>
+    <memberTool name="Test"/>
   </toolshelf>
 
   <tool name="Launcher" label="Launcher" icon="hicon:/SVGIcons.index?NETVIEW_restore.svg">
     <script scriptType="python"><![CDATA[import importlib
 import launcher.hook
 importlib.reload(launcher.hook)]]></script>
+  </tool>
+
+    <tool name="Test" label="Test" icon="hicon:/SVGIcons.index?NETVIEW_restore.svg">
+    <script scriptType="python"><![CDATA[import importlib
+import launcher.KeyHandler
+importlib.reload(launcher.KeyHandler)]]></script>
   </tool>
 </shelfDocument>

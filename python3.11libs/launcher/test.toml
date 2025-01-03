@@ -1,0 +1,14 @@
+[sop.t]
+action = "createnode"
+param = "xform"
+pre = ""
+post = ""
+
+[sop.w]
+action = "createnode"
+param = "attribwrangle"
+pre = ""
+post = ""
+
+[sop.d]
+action ="testing"

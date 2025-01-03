@@ -5,6 +5,7 @@
         "w": "attribwrangle",
         "b": "blast",
         "g": "group",
-        "m": "merge"
+        "m": "merge",
+        "n": "null"
     }
 }
