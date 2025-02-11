@@ -1,9 +1,9 @@
 import logging
 from pathlib import Path
 
+import tomli_w as tomlw
 import tomllib as toml
 
-import tomli_w as tomlw
 from launcher.Executor import Action
 
 # Constants

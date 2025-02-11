@@ -30,3 +30,15 @@ param = "groupcreate"
 
 [sop.d]
 action = "testing"
+
+[vop]
+
+[vop.b]
+action = "createnode"
+param = "bind"
+
+[lop]
+
+[lop.t]
+action = "createnode"
+param = "xform"

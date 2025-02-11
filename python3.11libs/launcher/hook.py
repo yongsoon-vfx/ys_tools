@@ -1,9 +1,19 @@
 import logging
 import tkinter as tk
 
+import hou  # type: ignore
+
 from launcher.edit import *
 from launcher.KeyHandler import KeymapReader
 from launcher.keymap import *
+from launcher.NetworkType import NetworkType
+
+# IMPORTANT for proper VSCode intellisense to work
+try:
+    from KeyHandler import KeymapReader
+    from NetworkType import NetworkType
+except Exception as _:
+    pass
 
 
 def on_key_press(event):
@@ -32,12 +42,14 @@ def on_key_press(event):
 
     try:
         s = KeymapReader()
-        print(s.key_map)
-        action = s.ParseKey("sop", str(event.keysym))
+        network_type = NetworkType.get_network_type(hou.ui.paneTabUnderCursor().pwd())
+        # print(network_type.value)
+        # print(s.key_map)
+        action = s.ParseKey(network_type.value, str(event.keysym))
         action.Execute()
     except Exception as e:
         print(e)
-        logging.error(f"Unable to create. Perhaps check the name?")
+        # logging.error("Unable to create. Perhaps check the name?")
     root.destroy()
 
 
