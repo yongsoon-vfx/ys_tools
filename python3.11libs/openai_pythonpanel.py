@@ -12,7 +12,7 @@ from PySide2.QtWidgets import (
 )
 
 # Set your Google API key here
-genai.configure(api_key="AIzaSyDb0uKI3Z4PWrgRgtqyRVQvhWicK5euvvU")
+genai.configure(api_key="API_KEY_HERE")
 
 
 class ChatBox(QWidget):
