@@ -7,6 +7,7 @@
 
   <toolshelf name="YS_Tools" label="YS Tools">
     <memberTool name="Launcher"/>
+    <memberTool name="Quick_Merge"/>
     <memberTool name="Test"/>
   </toolshelf>
 
@@ -14,6 +15,13 @@
     <script scriptType="python"><![CDATA[import importlib
 import launcher.hook
 importlib.reload(launcher.hook)]]></script>
+  </tool>
+
+  <tool name="Quick_Merge" label="Quick Merge" icon="cell_merge.svg">
+    <script scriptType="python"><![CDATA[import importlib
+import radial_actions.quick_merge as quick_merge
+quick_merge = importlib.reload(quick_merge)
+quick_merge.main(kwargs)]]></script>
   </tool>
 
     <tool name="Test" label="Test" icon="hicon:/SVGIcons.index?NETVIEW_restore.svg">
