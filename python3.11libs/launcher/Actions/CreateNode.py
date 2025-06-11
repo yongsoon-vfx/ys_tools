@@ -95,6 +95,9 @@ class NodeFactory:
         self.createNode()
         self.created_node.setGenericFlag(hou.nodeFlag.Display, True)
         self.created_node.setGenericFlag(hou.nodeFlag.Render, True)
+        self.created_node.setSelected(
+            True, clear_all_selected=True, show_asset_if_selected=True
+        )
 
     def createNode(self) -> int:
         match self.state:

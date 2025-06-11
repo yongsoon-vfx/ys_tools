@@ -42,3 +42,9 @@ param = "bind"
 [lop.t]
 action = "createnode"
 param = "xform"
+
+[obj]
+
+[obj.g]
+action = "createnode"
+param = "geo"

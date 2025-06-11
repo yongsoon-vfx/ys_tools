@@ -1,0 +1,6 @@
+attribwrangle/snippet
+    [ys] XYZDist Boilerplate
+    int prim;
+    vector puv;
+    float dist = xyzdist(0,@P,prim,puv);
+

@@ -5,7 +5,7 @@
  used by the application.  Note, that two definitions of the
  same interface or of the interfaces menu are not allowed
  in a single file. -->
-  <interface name="Qt_Web_Engine" label="Qt Web Engine" icon="MISC_python"
+  <interface name="Gemini_Chat" label="Gemini Chat" icon="MISC_python"
     showNetworkNavigationBar="false" help_url="">
     <script><![CDATA[########################################################################
 # Replace the sample code below with your own to create a
@@ -28,10 +28,10 @@ from PySide2 import QtWidgets
 from importlib import reload
 
 def createInterface():
-      import qtwebengine
-      reload(qtwebengine)
+      import openai_pythonpanel
+      reload(openai_pythonpanel)
 
-      return qtwebengine.createInterface()
+      return openai_pythonpanel.createInterface()
 
 
 ]]></script>
