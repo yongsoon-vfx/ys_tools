@@ -1,0 +1,139 @@
+// Font sizes
+#define MEGAHUGE		17
+#define HUGE			13
+#define LARGE			11
+#define MEDIUM			10
+#define MEDIUM_SMALL		9
+#define SMALL			8
+#define TINY			7
+
+// <font name> [<bold|italic|bold-italic>] <size>
+
+DefaultFont:			"Inter" MEDIUM
+
+HelpCardFont:            	"Inter" MEDIUM
+
+InfoCardFont:			"JetBrainsMono" MEDIUM
+
+PaperFont:			"Inter" SMALL
+
+NotifierFont:			"Inter" MEDIUM
+
+NotifierHeadingFont:		"Inter" Bold MEDIUM
+
+OpListFont:			"Inter" MEDIUM
+OpListTitleFont:		"Inter" MEDIUM
+
+VopInOutLabelFont:		"Inter" SMALL
+
+SpreadsheetFont:		"JetBrainsMono" MEDIUM
+SpreadsheetTitleFont:		"Inter" MEDIUM
+
+ListFont:			"Inter" MEDIUM
+ListTitleFont:			"Inter" MEDIUM
+
+ButtonFont:			"Inter" MEDIUM
+
+LabelFont:			"Inter" MEDIUM
+
+HeadingFont:			"Inter" Bold MEDIUM
+
+HotkeyFont:			"Inter" Italic MEDIUM
+
+TitleFont:			"Inter" MEGAHUGE
+
+MenuFont:			"Inter" LARGE
+
+InputSmallFont:			"JetBrainsMono" MEDIUM_SMALL
+InputFont:			"JetBrainsMono" MEDIUM
+
+DopeSheetFont:			"Inter" MEDIUM_SMALL
+DopeSheetLargeFont:		"Inter" LARGE
+
+OffDefaultParmFont:		"JetBrainsMono" Bold MEDIUM
+
+CompositorFont:			"Inter" LARGE
+CompositorRulerFont:		"Inter" TINY
+CompositorSmallFont:		"Inter" MEDIUM
+CompositorSmallerFont:		"Inter" SMALL
+CompositorInspectFont:		"JetBrainsMono" MEDIUM_SMALL
+
+TreeFont:			"Inter" MEDIUM
+TreeFontBold:			"Inter" Bold MEDIUM
+TreeFontItalic:			"Inter" Italic MEDIUM
+TreeFontBoldItalic:		"Inter" Bold-Italic MEDIUM
+
+PerfMonFont:			"Inter" MEDIUM
+
+FinePrintFont:			"Inter" TINY
+
+BoldFont:			"Inter" Bold MEDIUM
+BoldFontLarge:			"Inter" Bold LARGE
+
+TextareaFont			"JetBrainsMono" LARGE
+TextportFont			"JetBrainsMono" LARGE
+
+HandleFont			"Inter" SMALL
+
+GraphFont			"JetBrainsMono" MEDIUM
+
+LadderFont			"Inter" MEDIUM
+
+NetworkFont:			"Inter" MEDIUM
+
+PaneTabFont:			"Inter" MEDIUM_SMALL
+PaneTabNetFont:			"Inter" Italic MEDIUM_SMALL
+PaneTabPinnedFont:		"Inter" Bold MEDIUM_SMALL
+
+ShelfTabFont:			"Inter" SMALL
+
+ShelfItemFont:			"Inter" SMALL
+ShelfItemTinyFont:		"Inter" TINY
+ShelfTextItemFont:		"Inter" MEDIUM
+
+PathGadgetFont:			"Inter" MEDIUM
+
+StateLabelFont:			"Inter" Bold MEDIUM
+
+ViewportFont:			"Inter" MEDIUM
+
+WorksheetLabelFont:		Black 16
+
+WorksheetPerfMonLabelFont:	Black 12
+
+ViewportTimeFont:		Black 20
+
+ViewportInfoFont:		"JetBrainsMono" MEDIUM
+
+ViewportInspectFont:		"JetBrainsMono" MEDIUM_SMALL
+
+ABrowserModeFont:		"Inter" MEDIUM
+
+ABrowserLargeModeFont:		"Inter" HUGE
+
+ABrowserMedHeaderFont:		"Inter" Bold 12
+
+ABrowserVersionHeaderFont:	"Inter" Bold 10
+
+ABrowserTooltipCategoryFont3:	"Inter" Bold 7
+ABrowserTooltipCategoryFont4:	"Inter" Bold 5
+
+ABrowserModeCategoryFont3:	"Inter" Bold 8
+ABrowserModeCategoryFont4:	"Inter" Bold 6
+
+ABrowserLargeModeCategoryFont3:	 "Inter" Bold 20
+ABrowserLargeModeCategoryFont4:	 "Inter" Bold 15
+
+OrboltSplashscreenFont:		"Inter" Bold 10
+
+ViewerFlashMessageFont:		NetworkFont
+ViewerFlashMessageFontHeight:	0.3
+
+AnimBarLabelFont:               "Inter" SMALL
+
+LeverSliderValueFont:           "JetBrainsMono" MEDIUM_SMALL
+LeverSliderThumbFont:           "Inter" TINY
+
+// Volume of audio alerts
+AudioVolume:			0.75
+

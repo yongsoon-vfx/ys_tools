@@ -15,3 +15,7 @@ def firstNetworkEditor():
 
 def firstNetworkEditorNetwork():
     return hou.ui.paneTabOfType(hou.paneTabType.NetworkEditor).pwd()
+
+
+def paneTabCursorPosition():
+    return hou.ui.paneTabUnderCursor().cursorPosition()

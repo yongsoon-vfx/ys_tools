@@ -1,9 +1,10 @@
 import hou
 
 
-def make_merge(node: hou.Node):
+def make_merge(node: hou.Node, cursor_pos=None):
     panetab_under_cursor = hou.ui.paneTabUnderCursor()
-    cursor_pos = panetab_under_cursor.cursorPosition()
+    if cursor_pos is None:
+        cursor_pos = panetab_under_cursor.cursorPosition()
     current_node = panetab_under_cursor.pwd()
     obj_merge = current_node.createNode("object_merge")
     obj_merge.parm("objpath1").set(node.path())
@@ -17,8 +18,8 @@ def make_merge(node: hou.Node):
     return 0
 
 
-def main(kwargs):
-    print(kwargs)
+def main(kwargs, cursor_pos=None):
+    # print(kwargs)
     panetab_under_cursor = hou.ui.paneTabUnderCursor()
     try:
         grabbed_node = hou.session._grab_node
@@ -30,7 +31,7 @@ def main(kwargs):
             panetab_under_cursor.flashMessage(
                 "hicon:/SVGIcons.index?BUTTONS_list_info.svg",
                 f"Currently Grabbing {grabbed_node.path()}",
-                5,
+                10,
             )
             return 0
         else:
@@ -41,5 +42,5 @@ def main(kwargs):
             )
             return 1
 
-    make_merge(grabbed_node)
+    make_merge(grabbed_node, cursor_pos=cursor_pos)
     return 0
