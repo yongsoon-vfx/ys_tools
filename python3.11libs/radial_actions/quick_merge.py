@@ -1,6 +1,11 @@
 import hou
 
 
+def clearSessionModule():
+    hou.setSessionModuleSource("")
+    return 0
+
+
 def make_merge(node: hou.Node, cursor_pos=None):
     panetab_under_cursor = hou.ui.paneTabUnderCursor()
     if cursor_pos is None:
@@ -15,6 +20,7 @@ def make_merge(node: hou.Node, cursor_pos=None):
         1,
     )
     hou.setSessionModuleSource("del(_grab_node)")
+    hou.ui.postEventCallback(clearSessionModule)
     return 0
 
 

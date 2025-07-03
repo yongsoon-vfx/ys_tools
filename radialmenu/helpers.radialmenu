@@ -1,9 +1,0 @@
-{
-	"fileversion":"20.5.278",
-	"name":"helpers",
-	"categories":"Standard",
-	"pane":"network",
-	"label":"Helpers",
-	"type":"script_submenu",
-	"script":"panetab_under_cursor = hou.ui.paneTabUnderCursor()\ncursor_pos = panetab_under_cursor.cursorPosition()\n\ndef runQuickMerge(**kwargs):\n    import importlib\n    import radial_actions.quick_merge as quick_merge\n    quick_merge = importlib.reload(quick_merge)\n    quick_merge.main(kwargs,cursor_pos=cursor_pos)\n\n\nmenu = {\n    \"n\": {\n        \"type\": \"script_action\",\n        \"label\": \"Stash Merge\",\n        \"icon\": \"cell_merge.svg\",\n        \"script\": runQuickMerge,\n    },\n}\n\nradialmenu.setRadialMenu(menu)"
-}

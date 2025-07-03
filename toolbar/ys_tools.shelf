@@ -8,6 +8,7 @@
   <toolshelf name="YS_Tools" label="YS Tools">
     <memberTool name="Launcher"/>
     <memberTool name="Quick_Merge"/>
+    <memberTool name="Stash_Tabs"/>
     <memberTool name="Test"/>
   </toolshelf>
 
@@ -22,6 +23,13 @@ importlib.reload(launcher.hook)]]></script>
 import radial_actions.quick_merge as quick_merge
 quick_merge = importlib.reload(quick_merge)
 quick_merge.main(kwargs)]]></script>
+  </tool>
+
+  <tool name="Stash_Tabs" label="Stash Tabs" icon="bookmark.svg">
+    <script scriptType="python"><![CDATA[import importlib
+import radial_actions.add_stash_tabs as stash_tabs
+stash_tabs = importlib.reload(stash_tabs)
+stash_tabs.main(kwargs)]]></script>
   </tool>
 
     <tool name="Test" label="Test" icon="hicon:/SVGIcons.index?NETVIEW_restore.svg">

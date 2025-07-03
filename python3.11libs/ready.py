@@ -1,4 +1,5 @@
-import os, time
+import os
+import time
 
 stime = float(os.getenv("_stime"))
 ctime = round(time.time(), 2)
